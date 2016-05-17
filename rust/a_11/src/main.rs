@@ -13,17 +13,21 @@ fn fib_memo(n: usize, memo: &mut Vec<u64>) -> u64 {
         *x
     }
     else {
-        let result = match n {
-            0...1 => {
-                1
-            },
-            _ => {
-                fib_memo(n - 2, &mut memo.clone()) + fib_memo(n - 1, &mut memo.clone())
-            }
-        };
+        let result = fib(n, memo);
         memo.push(result);
         result
     }
+}
+
+fn fib(n: usize, memo: &Vec<u64>) -> u64 {
+    match n {
+        0...1 => {
+            1
+        },
+        _ => {
+            fib_memo(n - 2, &mut memo.clone()) + fib_memo(n - 1, &mut memo.clone())
+        }
+    }    
 }
 
 fn ans(n: u64) -> bool {
