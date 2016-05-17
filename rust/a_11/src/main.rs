@@ -1,18 +1,11 @@
 fn main() {
     let mut memo: Vec<u64> = vec![];
-    let mut log: Vec<u64> = vec![];
+    let result: Vec<u64> = (0..).map(|x| fib_memo(x, &mut memo))
+                                .filter(|&x| (x > 144) & ans(x))
+                                .take(5)
+                                .collect();
     
-    for x in (0..) {
-        let v = fib_memo(x, &mut memo);
-        if (v > 144) & ans(v) {
-            log.push(v)
-        }
-        
-        if log.len() == 5 {
-            break;
-        }
-    }
-    println!("{:?}", log);
+    println!("{:?}", result);
 }
 
 fn fib_memo(n: usize, memo: &mut Vec<u64>) -> u64 {
