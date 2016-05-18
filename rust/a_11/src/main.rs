@@ -25,7 +25,8 @@ fn fib(n: usize, memo: &Vec<u64>) -> u64 {
             1
         },
         _ => {
-            fib_memo(n - 2, &mut memo.clone()) + fib_memo(n - 1, &mut memo.clone())
+            let mut current = memo.clone();
+            fib_memo(n - 2, &mut current) + fib_memo(n - 1, &mut current)
         }
     }    
 }
