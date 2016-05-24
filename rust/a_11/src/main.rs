@@ -40,6 +40,5 @@ fn right_exp(n: u64) -> u64 {
         .as_str()
         .chars()
         .map(|x| x.to_digit(10))
-        .flat_map(|x| x)
-        .fold(0, |sum, x| sum + x) as u64
+        .fold(0, |sum, x| x.map(|y| sum + y).unwrap_or(sum)) as u64
 }
