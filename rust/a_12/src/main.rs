@@ -1,7 +1,7 @@
 fn main() {
-    let sqrts = (2..).map(|x| f64::from(x).sqrt());
+    let sqrts = (2..100).map(|x| f64::from(x).sqrt());
     
-    for num in sqrts.into_iter().filter(|&x| x < 10.0) {
+    for num in sqrts.into_iter() {
         println!("{}", num);
     }
     
